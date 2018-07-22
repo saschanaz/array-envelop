@@ -49,6 +49,9 @@ describe("feature test", () => {
   // it("should work with JSON.stringify", () => {
   //   expect(JSON.stringify(target)).toBe('["eve","maya"]');
   // });
+  it("should work with hasOwnProperty", () => {
+    expect(target.hasOwnProperty(0)).toBe(true);
+  });
   it("should indexOf", () => {
     expect(target.indexOf("maya")).toBe(1);
   });
