@@ -1,0 +1,31 @@
+{
+  "name": "array-envelop",
+  "version": "1.0.0",
+  "description": "Wraps an array-like object to an array",
+  "main": "index.js",
+  "module": "main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saschanaz/array-envelop.git"
+  },
+  "keywords": [
+    "array",
+    "iterable"
+  ],
+  "author": "Kagami Sascha Rosylight <saschanaz@outlook.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saschanaz/array-envelop/issues"
+  },
+  "homepage": "https://github.com/saschanaz/array-envelop#readme",
+  "dependencies": {
+    "esm": "^3.0.72"
+  },
+  "devDependencies": {
+    "expect": "^23.4.0",
+    "mocha": "^5.2.0"
+  }
+}
