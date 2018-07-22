@@ -18,7 +18,16 @@ export function envelop(iterable) {
       if ((typeof property !== "symbol") && !isNaN(property)) {
         return target[property];
       }
-    }
+    },
+    has: (target, property) => {
+      if (property in Array.prototype) {
+        return true;
+      }
+      if ((typeof property !== "symbol") && !isNaN(property)) {
+        return property in target;
+      }
+    },
+    ownKeys: target => [...Array.prototype.keys.call(target)].map(i => i.toString())
   });
 }
 

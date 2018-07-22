@@ -3,7 +3,7 @@
 const expect = require("expect");
 const { envelop } = require("..");
 
-const target = envelop({ 0: "eve", 1: "maya", length: 2 });
+const target = envelop({ 0: "eve", 1: "maya", length: 2, excessive: "no" });
 
 describe("feature test", () => {
   it("should return items", () => {
@@ -29,6 +29,11 @@ describe("feature test", () => {
     for (const item of target) items.push(item);
     expect(items.join(" ")).toBe(target.join(" "));
   });
+  it("should iterate via for-in", () => {
+    const indices = [];
+    for (const i in target) indices.push(i);
+    expect(indices).toEqual(["0", "1"]);
+  });
   it("should work with iterators", () => {
     for (const [i, item] of target.entries()) {
       expect(item).toBe(target[i]);
@@ -45,7 +50,10 @@ describe("feature test", () => {
   });
   it("shouldn't fail to index by a Symbol", () => {
     expect(target[Symbol.toStringTag]).toBeUndefined();
-  })
+  });
+  it("should shadow excessive properties", () => {
+    expect("excessive" in target).toBe(false);
+  });
 });
 
 describe("failure test", () => {

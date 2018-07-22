@@ -34,3 +34,9 @@ object.length = 3;
 
 enveloped.join(" "); // "maya eve aya"
 ```
+
+```js
+const liveNodeList = document.getElementsByTagtName("div");
+
+envelop(liveNodeList); // a live array that changes as the document structure does
+```
