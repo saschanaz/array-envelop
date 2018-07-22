@@ -1,4 +1,4 @@
-# array-envelop [![npm version](https://badge.fury.io/js/array-envelop.svg)](https://badge.fury.io/js/array-envelop)
+# array-envelop [![npm version](https://badge.fury.io/js/array-envelop.svg)](https://badge.fury.io/js/array-envelop) [![Build Status](https://travis-ci.org/saschanaz/array-envelop.svg?branch=master)](https://travis-ci.org/saschanaz/array-envelop)
 
 This wraps an array-like object to an array so that every array method can be utilized. Try yourself via [RunKit](https://npm.runkit.com/array-envelop).
 
