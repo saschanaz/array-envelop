@@ -1,6 +1,6 @@
-# array-envelop
+# array-envelop [![npm version](https://badge.fury.io/js/array-envelop.svg)](https://badge.fury.io/js/array-envelop)
 
-This wraps an array-like object to an array so that every array method can be utilized.
+This wraps an array-like object to an array so that every array method can be utilized. Try yourself via [RunKit](https://npm.runkit.com/array-envelop).
 
 ```js
 import { envelop } from "array-envelop";
