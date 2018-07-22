@@ -15,7 +15,7 @@ export function envelop(iterable) {
       if (typeof Array.prototype[property] === "function") {
         return Array.prototype[property];
       }
-      if (!isNaN(property)) {
+      if ((typeof property !== "symbol") && !isNaN(property)) {
         return target[property];
       }
     }

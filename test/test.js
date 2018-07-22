@@ -43,7 +43,9 @@ describe("feature test", () => {
   it("should find", () => {
     expect(target.find(item => item === "maya")).toBe("maya");
   });
-  
+  it("shouldn't fail to index by a Symbol", () => {
+    expect(target[Symbol.toStringTag]).toBeUndefined();
+  })
 });
 
 describe("failure test", () => {
