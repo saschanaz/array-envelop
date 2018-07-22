@@ -42,6 +42,13 @@ describe("feature test", () => {
   it("should work with Array.from", () => {
     expect(Array.from(target).join(" ")).toBe(target.join(" "));
   });
+  // TODO:
+  // it("should work with Array.isArray", () => {
+  //   expect(Array.isArray(target)).toBe(true);
+  // });
+  // it("should work with JSON.stringify", () => {
+  //   expect(JSON.stringify(target)).toBe('["eve","maya"]');
+  // });
   it("should indexOf", () => {
     expect(target.indexOf("maya")).toBe(1);
   });
