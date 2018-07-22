@@ -1,13 +1,13 @@
 export function envelop(iterable) {
-  return new Proxy(iterable, {
+  return new Proxy([], {
     getPrototypeOf: () => Array.prototype,
     isExtensible: () => false,
     preventExtensions: () => true,
     set: () => false,
     deleteProperty: () => false,
-    get: (target, property) => {
+    get: (_, property) => {
       if (property === "length") {
-        return "length" in target ? target.length : 0;
+        return "length" in iterable ? iterable.length : 0;
       }
       if (property === "concat") {
         return concat;
@@ -16,18 +16,26 @@ export function envelop(iterable) {
         return Array.prototype[property];
       }
       if ((typeof property !== "symbol") && !isNaN(property)) {
-        return target[property];
+        return iterable[property];
       }
     },
-    has: (target, property) => {
+    has: (_, property) => {
       if (property in Array.prototype) {
         return true;
       }
       if ((typeof property !== "symbol") && !isNaN(property)) {
-        return property in target;
+        return property in iterable;
       }
     },
-    ownKeys: target => [...Array.prototype.keys.call(target)].map(i => i.toString())
+    ownKeys: _ => [...Array.prototype.keys.call(iterable), "length"].map(i => i.toString()),
+    getOwnPropertyDescriptor: (_, property) => {
+      if ((typeof property !== "symbol") && !isNaN(property)) {
+        return Object.getOwnPropertyDescriptor(iterable, property);
+      }
+      if (property === "length") {
+        return Object.getOwnPropertyDescriptor(Array.prototype, "length");
+      }
+    }
   });
 }
 
