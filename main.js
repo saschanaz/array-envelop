@@ -15,7 +15,7 @@ export function envelop(iterable) {
       if (typeof Array.prototype[property] === "function") {
         return Array.prototype[property];
       }
-      if ((typeof property !== "symbol") && !isNaN(property)) {
+      if (isNumberLike(property)) {
         return iterable[property];
       }
     },
@@ -23,13 +23,13 @@ export function envelop(iterable) {
       if (property in Array.prototype) {
         return true;
       }
-      if ((typeof property !== "symbol") && !isNaN(property)) {
+      if (isNumberLike(property)) {
         return property in iterable;
       }
     },
     ownKeys: _ => [...Array.prototype.keys.call(iterable), "length"].map(i => i.toString()),
     getOwnPropertyDescriptor: (_, property) => {
-      if ((typeof property !== "symbol") && !isNaN(property)) {
+      if (isNumberLike(property)) {
         return Object.getOwnPropertyDescriptor(iterable, property);
       }
       if (property === "length") {
@@ -41,4 +41,8 @@ export function envelop(iterable) {
 
 function concat(array) {
   return Array.from(this).concat(array);
+}
+
+function isNumberLike(name) {
+  return (typeof name !== "symbol") && !isNaN(name);
 }
