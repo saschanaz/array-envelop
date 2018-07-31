@@ -9,9 +9,6 @@ export function envelop(iterable) {
       if (property === "length") {
         return "length" in iterable ? iterable.length : 0;
       }
-      if (property === "concat") {
-        return concat;
-      }
       if (typeof Array.prototype[property] === "function") {
         return Array.prototype[property];
       }
@@ -37,10 +34,6 @@ export function envelop(iterable) {
       }
     }
   });
-}
-
-function concat(array) {
-  return Array.from(this).concat(array);
 }
 
 function isNumberLike(name) {
